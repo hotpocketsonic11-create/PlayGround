@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#071322">
+  <meta name="description" content="Dash, jump and collect rings in a bright, high-speed coastal arcade adventure.">
+  <title>Blue Rush — Coastline Circuit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="game.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Blue Rush home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>BLUE<span class="brand-light">RUSH</span></span>
+      </a>
+      <div class="stage-label"><span class="live-dot"></span> COASTLINE CIRCUIT <span class="stage-divider">/</span> ZONE 01</div>
+      <button class="sound-button" id="sound-toggle" type="button" aria-label="Toggle sound" title="Toggle sound"><span id="sound-icon">♪</span><span class="sound-label">SOUND ON</span></button>
+    </header>
+
+    <section class="game-wrap" aria-label="Blue Rush game">
+      <div class="game-topline">
+        <div class="level-name"><span class="level-icon">✦</span><span>PALM SHORE</span><span class="level-tag">ACT 1</span></div>
+        <div class="hud">
+          <div class="hud-item ring-hud"><span class="ring-icon">◎</span><span id="ring-count">000</span><small>RINGS</small></div>
+          <div class="hud-item score-hud"><span id="score-count">000000</span><small>SCORE</small></div>
+          <div class="hud-item energy-hud"><span class="energy-label">ENERGY</span><span class="hearts" id="hearts" aria-label="3 energy"><i></i><i></i><i></i></span></div>
+        </div>
+      </div>
+
+      <div class="viewport" id="viewport">
+        <canvas id="game" width="960" height="540" aria-label="Blue Rush gameplay. Press space or tap jump to begin."></canvas>
+        <div class="scanline" aria-hidden="true"></div>
+        <div class="vignette" aria-hidden="true"></div>
+        <div class="overlay" id="overlay">
+          <div class="overlay-card" id="overlay-card">
+            <div class="eyebrow"><span class="eyebrow-line"></span> A HIGH-SPEED ARCADE RUN <span class="eyebrow-line"></span></div>
+            <h1 id="overlay-title">Find your<br><em>fast lane.</em></h1>
+            <p id="overlay-copy">Sprint the sunlit shoreline, snag every ring, and keep your momentum through the course.</p>
+            <button class="start-button" id="start-button" type="button"><span id="start-label">START RUN</span><span class="button-arrow">↗</span></button>
+            <div class="key-hint" id="key-hint"><kbd>SPACE</kbd> OR <kbd>↑</kbd> TO JUMP <span>·</span> <kbd>↓</kbd> TO ROLL</div>
+          </div>
+        </div>
+        <div class="pause-badge" id="pause-badge" hidden>PAUSED <span>Ⅱ</span></div>
+        <button class="pause-button" id="pause-button" type="button" aria-label="Pause game" title="Pause game" hidden>Ⅱ</button>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="game-bottomline">
+        <div class="progress-wrap"><span class="progress-caption">FINISH</span><div class="progress-track"><i id="progress-fill"></i><b id="progress-runner">◆</b></div><span class="progress-distance" id="distance-label">0.0 km</span></div>
+        <div class="best-label">PERSONAL BEST <strong id="best-score">000000</strong></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-controls"><span class="control-key">↑</span><span class="control-key">SPACE</span><span>JUMP</span><span class="control-separator">/</span><span class="control-key">↓</span><span>ROLL</span></div>
+      <div class="footer-note"><span class="sparkle">✳</span> BUILT FOR THE NEED FOR SPEED</div>
+      <button class="restart-link" id="restart-button" type="button">RESTART <span>↻</span></button>
+    </footer>
+
+    <div class="mobile-controls" aria-label="Touch controls">
+      <button id="roll-control" class="touch-control roll-control" type="button" aria-label="Roll"><span>↓</span><small>ROLL</small></button>
+      <button id="jump-control" class="touch-control jump-control" type="button" aria-label="Jump"><span>↑</span><small>JUMP</small></button>
+    </div>
+    <p class="sr-only" id="game-announcer" aria-live="polite"></p>
+  </main>
+</body>
+</html>
